@@ -31,15 +31,16 @@ $(document).ready(function() {
     window.dancers.push(dancer);
   });
 
-
   $('.lineUpBtn').click(function() {
-
-
     window.dancers.forEach(function(dancer) {
       dancer.lineUp.call(dancer);
     })
-
   });
 
+  $('.findBtn').click(function() {
+    window.dancers.forEach(function(dancer) {
+      dancer.findPartners.call(dancer);
+    })
+  });
 });
 

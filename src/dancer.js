@@ -33,6 +33,7 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   this.setPosition(top, left);
   this._tBS = timeBetweenSteps;
   this.step();
+  this.partners = [];
 };
 
 //potential refactor of properties/functions
@@ -51,3 +52,31 @@ makeDancer.prototype.setPosition = function(top, left) {
 makeDancer.prototype.lineUp = function() {
   this.$node.toggleClass("leftLineup");
 };
+
+makeDancer.prototype.findPartners = function() {
+  var min = 200;
+  var thisTop = Number(this.$node.css('top').slice(0, -2));
+  var thisLeft = Number(this.$node.css('left').slice(0, -2));
+
+  console.log(typeof top);
+
+  dancers.forEach((current) => {
+    var currentTop = Number(current.$node.css('top').slice(0, -2));
+    var currentLeft = Number(current.$node.css('left').slice(0, -2));
+
+    var heightBetween = currentTop - thisTop;
+    var widthBetween = currentLeft - thisLeft;
+    var c = Math.sqrt((heightBetween * heightBetween) + (widthBetween * widthBetween));
+    if (c < min) {
+      this.partners.push(current);
+    }
+  });
+}
+
+makeDancer.prototype.danceWithPartners = function() {
+  // switch positions with animate
+  this.$node.css(top);
+  this.$node.css(left);
+
+
+}
