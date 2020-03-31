@@ -32,3 +32,6 @@ body, a:link, a:visited, a:active{
 .flashy{
   border-color: blue;
 }
+.leftLineup{
+  left: 50px !important;
+}
