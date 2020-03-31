@@ -41,6 +41,9 @@ $(document).ready(function() {
     window.dancers.forEach(function(dancer) {
       dancer.findPartners.call(dancer);
     })
+    window.dancers.forEach(function(dancer) {
+      dancer.danceWithPartners.call(dancer);
+    })
   });
 });
 

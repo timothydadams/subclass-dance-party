@@ -58,8 +58,6 @@ makeDancer.prototype.findPartners = function() {
   var thisTop = Number(this.$node.css('top').slice(0, -2));
   var thisLeft = Number(this.$node.css('left').slice(0, -2));
 
-  console.log(typeof top);
-
   dancers.forEach((current) => {
     var currentTop = Number(current.$node.css('top').slice(0, -2));
     var currentLeft = Number(current.$node.css('left').slice(0, -2));
@@ -75,8 +73,15 @@ makeDancer.prototype.findPartners = function() {
 
 makeDancer.prototype.danceWithPartners = function() {
   // switch positions with animate
-  this.$node.css(top);
-  this.$node.css(left);
+  var thisTop = Number(this.$node.css('top').slice(0, -2));
+  var thisLeft = Number(this.$node.css('left').slice(0, -2));
 
-
+  this.partners.forEach((current) => {
+    var currentTop = Number(current.$node.css('top').slice(0, -2));
+    var currentLeft = Number(current.$node.css('left').slice(0, -2));
+    current.$node.animate({top: thisTop, left: thisLeft});
+    thisTop = currentTop;
+    thisLeft = currentLeft;
+  });
+  this.$node.animate({top: thisTop, left: thisLeft});
 }
