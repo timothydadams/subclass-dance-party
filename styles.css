@@ -25,3 +25,10 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.pulsing{
+  border-radius: 20px;
+  border-width: 20px;
+}
+.flashy{
+  border-color: blue;
+}
