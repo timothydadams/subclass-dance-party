@@ -1,5 +1,6 @@
 var FlashyDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass('lineDance');
 }
 
 FlashyDancer.prototype = Object.create(makeDancer.prototype);

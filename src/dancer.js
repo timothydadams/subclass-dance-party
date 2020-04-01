@@ -30,6 +30,9 @@
 var makeDancer = function(top, left, timeBetweenSteps) {
   // this = Object.create()
   this.$node = $('<span class="dancer"></span>');
+  this.$node.mouseover(function() {
+    $(this).css({borderColor: 'green'});
+  });
   this.setPosition(top, left);
   this._tBS = timeBetweenSteps;
   this.step();
@@ -66,7 +69,9 @@ makeDancer.prototype.findPartners = function() {
     var widthBetween = currentLeft - thisLeft;
     var c = Math.sqrt((heightBetween * heightBetween) + (widthBetween * widthBetween));
     if (c < min) {
-      this.partners.push(current);
+      if (!current.partners.includes(this)) {
+        this.partners.push(current);
+      }
     }
   });
 }
@@ -79,9 +84,9 @@ makeDancer.prototype.danceWithPartners = function() {
   this.partners.forEach((current) => {
     var currentTop = Number(current.$node.css('top').slice(0, -2));
     var currentLeft = Number(current.$node.css('left').slice(0, -2));
-    current.$node.animate({top: thisTop, left: thisLeft});
+    current.$node.animate({top: thisTop, left: thisLeft}, 2000);
     thisTop = currentTop;
     thisLeft = currentLeft;
   });
-  this.$node.animate({top: thisTop, left: thisLeft});
+  this.$node.animate({top: thisTop, left: thisLeft}, 2000);
 }

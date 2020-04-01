@@ -45,5 +45,9 @@ $(document).ready(function() {
       dancer.danceWithPartners.call(dancer);
     })
   });
+
+  $('.pulsing').mouseover(function() {
+    this.$node.css({borderColor: 'green'});
+  })
 });
 

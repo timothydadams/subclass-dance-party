@@ -10,23 +10,30 @@ body, a:link, a:visited, a:active{
   color: lightblue;
 }
 div.floor {
-
   margin: 0 auto;
   width: 90%;
   height: 90%;
   background-image: url(https://wallpapercave.com/wp/wp3004058.jpg);
   background-size: cover;
 }
-.title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+
+.titleBar {
+  margin: 0 20px;
+  display:inline-block;
 }
+
 .topbar{
   height:32px;
+  width:100%;
   background-color: #555;
+  margin: 0 auto;
+  text-align: center;
 }
 .title{
-  background-color: #777;
+  font-size: 20pt;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-shadow: cyan 2px 2px;
 }
 .dancer{
   border:10px solid red;
@@ -34,12 +41,122 @@ div.floor {
   position:absolute;
 }
 .pulsing{
-  border-radius: 20px;
-  border-width: 20px;
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0.0;
+  border: 7px solid yellow;
+  border-radius: 30px;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  text-align: center;
 }
 .flashy{
   border-color: blue;
 }
 .leftLineup{
   left: 10% !important;
+}
+button {
+  background: #3D94F6;
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: solid #337FED 1px;
+  display: inline-block;
+  text-align: center;
+}
+
+button:hover {
+  border: solid #337FED 1px;
+  background: #1E62D0;
+  text-decoration: none;
+}
+
+button:focus {outline:0;}
+
+.lineDance {
+  offset-path: path('M20,20 C20,100 200,0 200,100');
+  animation: move 3000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+
+/* Make the element pulse (grow large and small slowly) */
+/* Usage
+    .myElement {
+        animation: pulsate 1s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 1;
+    }
+*/
+@-webkit-keyframes pulsate {
+  0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+/* Make the element's opacity pulse*/
+/* Usage
+  .myElement {
+      animation: opacityPulse 1s ease-out;
+      animation-iteration-count: infinite;
+      opacity: 0;
+  }
+*/
+@-webkit-keyframes opacityPulse {
+  0% {opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {opacity: 0.0;}
+}
+
+/* Make the element's background pulse. I call this alertPulse because it is red. You can call it something more generic. */
+/* Usage
+  .myElement {
+      animation: alertPulse 1s ease-out;
+      animation-iteration-count: infinite;
+      opacity: 1;
+  }
+*/
+@-webkit-keyframes alertPulse {
+  0% {background-color: #9A2727; opacity: 1;}
+  50% {opacity: red; opacity: 0.75; }
+  100% {opacity: #9A2727; opacity: 1;}
+}
+
+
+/* Make the element rotate infinitely. */
+/*
+Usage
+  .myElement {
+      animation: rotating 3s linear infinite;
+  }
+*/
+@keyframes rotating {
+from {
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+to {
+  -ms-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
 }
